@@ -1,4 +1,4 @@
-import './globals.css'
+import '../common/globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
@@ -16,6 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <title>Michael shopify</title>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   )
