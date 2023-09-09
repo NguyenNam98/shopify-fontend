@@ -1,28 +1,58 @@
 'use client'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-import {Button, Grid} from "@mui/material"
-
+import {Button, MenuList, Paper, Popover} from "@mui/material"
+import PopupState, {bindPopover, bindTrigger} from "material-ui-popup-state";
+import MenuItem from "@mui/material/MenuItem"
 interface ListMenu {
-    isOpen: boolean
-    listItem: {}
-    handleOpen: Function
+    listItem: string[]
+    name: string
 }
+
+
 export default function List(props: ListMenu ) {
-    const { isOpen, listItem, handleOpen} = props
+    const {
+        listItem,
+        name
+    } = props
+
     return (
-        <>
-            <Button
-                id="demo-customized-button"
-                aria-controls={isOpen ? 'demo-customized-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={isOpen ? 'true' : undefined}
-                variant="contained"
-                disableElevation
-                onClick={handleOpen()}
-                endIcon={<KeyboardArrowDownIcon />}
-            >
-                Options
-            </Button>
-        </>
+        <PopupState variant="popover" popupId="demo-popup-popover">
+            {(popupState) => (
+                <div>
+                    <Button
+                        // id="demo-customized-button"
+                        aria-haspopup="true"
+                        variant="contained"
+                        disableElevation
+                        {...bindTrigger(popupState)}
+                        endIcon={listItem.length ? <KeyboardArrowDownIcon /> : ''}
+                    >
+                        {name}
+                    </Button>
+                    <Popover
+                        {...bindPopover(popupState)}
+                        anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'center',
+                        }}
+                        transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'center',
+                        }}
+                    >
+                        <Paper>
+                            <MenuList>
+                                {listItem.map((item, index) => {
+                                    return (
+                                        <MenuItem>{item}</MenuItem>
+                                    )
+                                })}
+
+                            </MenuList>
+                        </Paper>
+                    </Popover>
+                </div>
+            )}
+        </PopupState>
     )
 }

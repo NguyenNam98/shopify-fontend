@@ -40,7 +40,7 @@ const light = {
     primary: {
       main: '#FFFFFF',
       light: '#ffa726',
-      dark: '#DB7048',
+      dark: '#ffa726',
     },
     secondary: {
       main: '#ffa726',
