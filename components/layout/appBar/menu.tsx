@@ -2,7 +2,7 @@
 
 import {Grid} from "@mui/material"
 import List from "@/components/layout/appBar/menu/list"
-import {styled} from "@mui/material/styles"
+import {alpha, styled} from "@mui/material/styles"
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined'
 import Box from "@mui/material/Box";
 
@@ -79,6 +79,8 @@ export default function Menu() {
     const GridContainer = styled(Grid)(({theme}) => ({
         backgroundColor: theme.palette.primary.light,
         borderTop : '1px solid #9999',
+        borderBottom : '1px solid',
+        borderColor: alpha(theme.palette.smoke.dark, 0.5),
         padding: theme.spacing(1),
         [theme.breakpoints.down('sm')]: {
             display: 'none',
