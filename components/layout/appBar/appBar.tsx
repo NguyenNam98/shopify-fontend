@@ -153,7 +153,7 @@ export default function PrimarySearchAppBar() {
             flexGrow: 1,
             // height: 300
         }}>
-            <AppBar position="static"  >
+            <AppBar position="static" >
                 <Toolbar>
                     <Box sx={{ flexGrow: 0.3 }} />
                     <Box sx = {{display: { xs: 'none', md: 'block'}}}>
